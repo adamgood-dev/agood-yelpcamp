@@ -152,7 +152,7 @@ app.use((req, res, next) => {
 // Routing
 
 app.get("/", (req, res) => {
-    res.render("Home");
+    res.render("home");
 })
 
 app.use("/campgrounds", campgroundRoutes)
