@@ -61,6 +61,8 @@ store.on("error", function(e) {
     console.log("Session store error", e);
 })
 
+app.set('trust proxy', 1);
+
 const sessionConfig = {
     store,
     name: 'session',
@@ -120,7 +122,7 @@ app.use(
                     "'self'",
                     "blob:",
                     "data:",
-                    `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/`, //SHOULD MATCH YOUR CLOUDINARY ACCOUNT!
+                    `https://res.cloudinary.com/${process.env.CLOUDINARY_CLOUD_NAME}/`,
                     "https://images.unsplash.com/"
                 ],
                 fontSrc    : [ "'self'", ...fontSrcUrls ],
