@@ -1,0 +1,8 @@
+#reviews-scroll {
+    height: 200px;
+    overflow-y: scroll;
+}
+
+#campgroundCarousel {
+    height: 400px;
+}
