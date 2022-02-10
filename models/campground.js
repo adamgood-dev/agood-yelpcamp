@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const { campgroundSchema } = require("../schemas");
 const Review = require("./review");
 const Schema = mongoose.Schema;
 
@@ -11,6 +10,7 @@ const ImageSchema = new Schema ( {
 
 const opts = { toJSON: { virtuals: true } };
 
+// Add a virtual thumbnail property for images, available by change to Cloudinary image URL
 ImageSchema.virtual('thumbnail').get(function() {
     return this.url.replace('/upload', '/upload/w_200')
 })
@@ -44,6 +44,7 @@ const CampgroundSchema = new Schema( {
     ]
 }, opts)
 
+// Virtual popup link + text when clicking on a campground's map marker
 CampgroundSchema.virtual('properties.popUpMarkUp').get(function() {
     return `
         <strong>
@@ -54,6 +55,7 @@ CampgroundSchema.virtual('properties.popUpMarkUp').get(function() {
         <p>${this.description.substring(0, 20)}...`
 })
 
+// Delete reviews from reviews collection
 CampgroundSchema.post('findOneAndDelete', async function(doc) {
     if (doc) {
         await Review.remove({

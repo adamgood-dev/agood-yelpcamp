@@ -6,6 +6,7 @@ const map = new mapboxgl.Map({
     zoom: 9 // starting zoom
 });
 
+// Add map controls
 map.addControl(new mapboxgl.NavigationControl());
 
 new mapboxgl.Marker()

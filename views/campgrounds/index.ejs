@@ -31,6 +31,8 @@
 
 
     <script>
+        // Script for passing MapBox and campground information to
+        // the script rendering the index page cluster map
         const mapToken = '<%-process.env.MAPBOX_TOKEN%>'
         const campgrounds = {features: <%-JSON.stringify(campgrounds)%>}
     </script>

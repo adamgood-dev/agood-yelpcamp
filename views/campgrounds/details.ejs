@@ -121,6 +121,8 @@
   </div>
 
   <script>
+    // code for sending the MapBox token and campground information
+    // to the detailsMap script rendering the map centered on this campground.
     const mapToken = '<%-process.env.MAPBOX_TOKEN%>';
     const campground = <%- JSON.stringify(campground) %>;
   </script>

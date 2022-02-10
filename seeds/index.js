@@ -3,6 +3,11 @@ const Campground = require("../models/campground");
 const cities = require("./cities");
 const {places, descriptors} = require("./seedHelpers");
 
+// Program to seed database with procgen campgrounds
+// For local testing & development purposes only.
+// Primarily used earlier in development, likely needs some fixes
+// To use with the final version of the app.
+
 mongoose.connect('mongodb://localhost:27017/yelp-camp');
 const db = mongoose.connection;
 db.on("error", console.error.bind(console, "connection error: "));

@@ -4,6 +4,9 @@ const catchAsync = require('../utils/CatchAsync');
 const passport = require("passport");
 const auths = require("../controllers/auth");
 
+// Routing related to user login/registration and access
+// Using passport to handle password encryption
+
 router.route('/register')
     .get(auths.registerForm)
     .post(catchAsync(auths.registerUser));

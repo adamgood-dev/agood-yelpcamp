@@ -1,6 +1,7 @@
 const Campground = require("../models/campground");
 const Review = require("../models/review");
 
+// Create a new review, save to database and attach it to campground
 module.exports.createReview = async (req, res) => {
     const campground = await Campground.findById(req.params.id);
     const review = new Review(req.body.review);
@@ -12,6 +13,7 @@ module.exports.createReview = async (req, res) => {
     res.redirect(`/campgrounds/${campground._id}`);
 }
 
+// Review deletion
 module.exports.destroyReview = async (req, res) => {
     const {id, review_id} = req.params;
     await Campground.findByIdAndUpdate(id, { $pull: { reviews: review_id } });

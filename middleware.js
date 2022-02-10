@@ -3,6 +3,7 @@ const Campground = require("./models/campground");
 const Review = require("./models/review");
 const ExpressError = require("./utils/ExpressError");
 
+// Check if a user is logged in.
 module.exports.isLoggedIn = (req, res, next) => {
     if (!req.isAuthenticated()) {
         req.session.returnTo = req.originalUrl;
@@ -12,6 +13,7 @@ module.exports.isLoggedIn = (req, res, next) => {
     next();
 }
 
+// Validate a user-created campground on creation.
 module.exports.validateCampground = (req, res, next) => {
     const { error } = campgroundSchema.validate(req.body);
     if (error) {
@@ -22,6 +24,7 @@ module.exports.validateCampground = (req, res, next) => {
     }
 }
 
+// Check if a user is authorized to edit a particular campground
 module.exports.isAuthorized = async(req, res, next) => {
     const {id} = req.params;
     const campground = await Campground.findById(id);
@@ -32,6 +35,7 @@ module.exports.isAuthorized = async(req, res, next) => {
     next();
 }
 
+// Validation of a user-created review before posting
 module.exports.validateReview = (req, res, next) => {
     const { error } = reviewSchema.validate(req.body);
     if (error) {
@@ -42,11 +46,12 @@ module.exports.validateReview = (req, res, next) => {
     }
 }
 
+// Check if a user is the author of a review before letting them delete
 module.exports.isReviewAuthor = async(req, res, next) => {
     const {id, review_id} = req.params;
     const review = await Review.findById(review_id);
     if (!review.author.equals(req.user._id)) {
-        req.flash('error', "You do not have permission to edit this campground");
+        req.flash('error', "You do not have permission to edit this review");
         return res.redirect(`/campgrounds/${id}`);
     }
     next();

@@ -15,12 +15,8 @@ const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const MongoDBStore = require("connect-mongo");
 
-const Campground = require("./models/campground");
-const Review = require("./models/review");
 const User = require("./models/user");
-const catchAsync = require("./utils/CatchAsync");
 const ExpressError = require("./utils/ExpressError");
-const CatchAsync = require("./utils/CatchAsync");
 const campgroundRoutes = require("./routes/campgrounds");
 const reviewRoutes = require("./routes/reviews");
 const authRoutes = require("./routes/auth");
@@ -78,7 +74,6 @@ const sessionConfig = {
 }
 app.use(session(sessionConfig));
 app.use(flash());
-//app.use(helmet());
 
 
 const scriptSrcUrls = [
@@ -153,10 +148,12 @@ app.use((req, res, next) => {
 
 // Routing
 
+// Home page
 app.get("/", (req, res) => {
     res.render("home");
 })
 
+// routing from dedicated route files
 app.use("/campgrounds", campgroundRoutes)
 app.use("/campgrounds/:id/reviews", reviewRoutes);
 app.use("/", authRoutes);

@@ -1,6 +1,7 @@
 const baseJoi = require("joi");
 const sanitizeHtml = require("sanitize-html");
 
+// HTML sanitization
 const extension = (joi) => ({
     type: 'string',
     base: joi.string(),
@@ -22,6 +23,8 @@ const extension = (joi) => ({
 })
 
 const Joi = baseJoi.extend(extension);
+
+// Schema validation using joi
 
 module.exports.campgroundSchema = Joi.object({
     campground: Joi.object({
