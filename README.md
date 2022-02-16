@@ -7,7 +7,8 @@ I created this app as a final project for Colt Steele's online Web Developer Boo
 
 While the project is functional as-is, there are various tweaks, improvements, and personalization changes that I plan to add in the future. Some of these include:
 - Better image validation, as well as back-end deletion of images on Cloudinary on deletion of a campground.
-- User pages where you can view all of the reviews made by an individual user
-- Average campground rating
+- User pages where you can view all of the reviews made by an individual user.
+- Average campground rating.
 - Numerous UI improvements, both through independent styling as well as tweaking the look of existing Bootstrap implementation.
-- Search functionality and either infinite scroll or paginization on the index page
+- Search functionality and either infinite scroll or paginization on the index page.
+- Fixes & improvements for display on mobile devices.
