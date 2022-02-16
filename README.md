@@ -10,3 +10,4 @@ While the project is functional as-is, there are various tweaks, improvements, a
 - User pages where you can view all of the reviews made by an individual user
 - Average campground rating
 - Numerous UI improvements, both through independent styling as well as tweaking the look of existing Bootstrap implementation.
+- Search functionality and either infinite scroll or paginization on the index page
